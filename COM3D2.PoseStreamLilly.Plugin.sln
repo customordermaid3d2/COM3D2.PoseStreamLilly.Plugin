@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30523.141
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "COM3D2.PoseStreamLilly.Plugin", "BepInPluginSample\COM3D2.PoseStreamLilly.Plugin.csproj", "{22EEBF57-57FB-4FF6-A298-653F0DB3E029}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{4C99D785-12A3-4867-922D-F079C8C72C2F}"
+	ProjectSection(SolutionItems) = preProject
+		MEMO.MD = MEMO.MD
+		README.MD = README.MD
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{22EEBF57-57FB-4FF6-A298-653F0DB3E029}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22EEBF57-57FB-4FF6-A298-653F0DB3E029}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22EEBF57-57FB-4FF6-A298-653F0DB3E029}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22EEBF57-57FB-4FF6-A298-653F0DB3E029}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1FFF12F1-8E56-41E7-852C-BCADFDC6003B}
+	EndGlobalSection
+EndGlobal
