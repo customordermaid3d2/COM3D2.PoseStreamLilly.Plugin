@@ -67,10 +67,10 @@ namespace COM3D2.PoseStreamLilly.Plugin
         {
             MyLog.LogMessage("Start");
 
-            SampleGUI.Install(gameObject, Config);
+            PoseStreamLillyGUI.Install(gameObject, Config);
 
             //SystemShortcutAPI.AddButton(MyAttribute.PLAGIN_FULL_NAME, new Action(delegate () { enabled = !enabled; }), MyAttribute.PLAGIN_NAME, MyUtill.ExtractResource(COM3D2.PoseStreamLilly.Plugin.Properties.Resources.icon));
-            SystemShortcutAPI.AddButton(MyAttribute.PLAGIN_FULL_NAME, new Action(delegate () { SampleGUI.isGUIOn = !SampleGUI.isGUIOn; }), MyAttribute.PLAGIN_NAME + " : " + ShowCounter.Value.ToString(), MyUtill.ExtractResource(COM3D2.PoseStreamLilly.Plugin.Properties.Resources.icon));
+            SystemShortcutAPI.AddButton(MyAttribute.PLAGIN_FULL_NAME, new Action(delegate () { PoseStreamLillyGUI.isGUIOn = !PoseStreamLillyGUI.isGUIOn; }), MyAttribute.PLAGIN_NAME + " : " + ShowCounter.Value.ToString(), MyUtill.ExtractResource(COM3D2.PoseStreamLilly.Plugin.Properties.Resources.icon));
         }
 
         public string scene_name = string.Empty;

@@ -85,7 +85,7 @@
     </Compile>
     <Compile Include="PoseStreamLilly.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SampleGUI.cs" />
+    <Compile Include="PoseStreamLillyGUI.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">

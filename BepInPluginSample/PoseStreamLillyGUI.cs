@@ -13,9 +13,9 @@ using UnityEngine.SceneManagement;
 
 namespace BepInPluginSample
 {
-    class SampleGUI : MonoBehaviour
+    class PoseStreamLillyGUI : MonoBehaviour
     {
-        public static SampleGUI instance;
+        public static PoseStreamLillyGUI instance;
 
         private static ConfigFile config;
 
@@ -43,13 +43,13 @@ namespace BepInPluginSample
             set => IsGUIOn.Value = value;
         }
 
-        internal static SampleGUI Install(GameObject parent,ConfigFile config)
+        internal static PoseStreamLillyGUI Install(GameObject parent,ConfigFile config)
         {
-            SampleGUI. config = config;
-            instance = parent.GetComponent<SampleGUI>();
+            PoseStreamLillyGUI. config = config;
+            instance = parent.GetComponent<PoseStreamLillyGUI>();
             if (instance == null)
             {
-                instance = parent.AddComponent<SampleGUI>();
+                instance = parent.AddComponent<PoseStreamLillyGUI>();
                 MyLog.LogMessage("GameObjectMgr.Install", instance.name);                
             }
             return instance;
@@ -68,7 +68,7 @@ namespace BepInPluginSample
         {
             MyLog.LogMessage("OnEnable");
 
-            SampleGUI.myWindowRect.load();
+            PoseStreamLillyGUI.myWindowRect.load();
             SceneManager.sceneLoaded += this.OnSceneLoaded;
         }
 
@@ -80,7 +80,7 @@ namespace BepInPluginSample
 
         public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
         {            
-            SampleGUI.myWindowRect.save();
+            PoseStreamLillyGUI.myWindowRect.save();
         }
 
         private void Update()
@@ -166,8 +166,8 @@ namespace BepInPluginSample
 
         public void OnDisable()
         {
-            SampleGUI.isCoroutine = false;
-            SampleGUI.myWindowRect.save();
+            PoseStreamLillyGUI.isCoroutine = false;
+            PoseStreamLillyGUI.myWindowRect.save();
             SceneManager.sceneLoaded -= this.OnSceneLoaded;
         }
 
