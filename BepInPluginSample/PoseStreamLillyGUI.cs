@@ -1,6 +1,6 @@
 ﻿using BepInEx;
 using BepInEx.Configuration;
-using COM3D2.Lilly.Plugin;
+using COM3D2.LillyUtill;
 using COM3D2.PoseStreamLilly.Plugin;
 using COM3D2API;
 using System;
@@ -50,33 +50,31 @@ namespace BepInPluginSample
             if (instance == null)
             {
                 instance = parent.AddComponent<PoseStreamLillyGUI>();
-                MyLog.LogMessage("GameObjectMgr.Install", instance.name);                
+                PoseStreamLilly.myLog.LogMessage("GameObjectMgr.Install", instance.name);                
             }
             return instance;
         }
 
         public void Awake()
         {
-            myWindowRect = new MyWindowRect(config, MyAttribute.PLAGIN_FULL_NAME,200,300,32,204);
+            myWindowRect = new MyWindowRect(config, MyAttribute.PLAGIN_NAME, MyAttribute.PLAGIN_NAME, "PS", ho:204);
             IsGUIOn = config.Bind("GUI", "isGUIOn", false);
-            ShowCounter = config.Bind("GUI", "isGUIOnKey", new BepInEx.Configuration.KeyboardShortcut(KeyCode.Alpha9, KeyCode.LeftControl));
-            
+            ShowCounter = config.Bind("GUI", "isGUIOnKey", new BepInEx.Configuration.KeyboardShortcut(KeyCode.Alpha9, KeyCode.LeftControl));           
             
         }
 
         public void OnEnable()
         {
-            MyLog.LogMessage("OnEnable");
-
             PoseStreamLillyGUI.myWindowRect.load();
             SceneManager.sceneLoaded += this.OnSceneLoaded;
         }
 
+        /*
         public void Start()
         {
             MyLog.LogMessage("Start");            
         }
-
+        */
 
         public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
         {            
@@ -96,7 +94,7 @@ namespace BepInPluginSample
             if (ShowCounter.Value.IsUp())
             {
                 isGUIOn = !isGUIOn;
-                MyLog.LogMessage("IsUp", ShowCounter.Value.Modifiers, ShowCounter.Value.MainKey);
+                PoseStreamLilly.myLog.LogMessage("IsUp", ShowCounter.Value.Modifiers, ShowCounter.Value.MainKey);
             }
         }
 
@@ -119,7 +117,7 @@ namespace BepInPluginSample
             GUI.enabled = true;
 
             GUILayout.BeginHorizontal();
-            GUILayout.Label(MyAttribute.PLAGIN_NAME + " " + ShowCounter.Value.ToString(),GUILayout.Height(20));
+            GUILayout.Label(myWindowRect.windowName, GUILayout.Height(20));
             GUILayout.FlexibleSpace();
             if (GUILayout.Button("-", GUILayout.Width(20), GUILayout.Height(20))) { IsOpen = !IsOpen; }
             if (GUILayout.Button("x", GUILayout.Width(20), GUILayout.Height(20))) { isGUIOn = false; }
@@ -166,23 +164,11 @@ namespace BepInPluginSample
 
         public void OnDisable()
         {
-            PoseStreamLillyGUI.isCoroutine = false;
+
             PoseStreamLillyGUI.myWindowRect.save();
             SceneManager.sceneLoaded -= this.OnSceneLoaded;
         }
 
-        public static bool isCoroutine = false;
-        public static int CoroutineCount = 0;
 
-        private IEnumerator MyCoroutine()
-        {
-            isCoroutine = true;
-            while (isCoroutine)
-            {
-                MyLog.LogMessage("MyCoroutine ", ++CoroutineCount);
-                //yield return null;
-                yield return new WaitForSeconds(1f);
-            }
-        }
     }
 }

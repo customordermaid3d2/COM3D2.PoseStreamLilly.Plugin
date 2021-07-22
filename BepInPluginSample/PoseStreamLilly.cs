@@ -1,7 +1,7 @@
 ﻿using BepInEx;
 using BepInEx.Configuration;
 using BepInPluginSample;
-using COM3D2.Lilly.Plugin;
+using COM3D2.LillyUtill;
 using COM3D2API;
 using HarmonyLib;
 using Newtonsoft.Json;
@@ -24,7 +24,7 @@ namespace COM3D2.PoseStreamLilly.Plugin
         // 단축키 설정파일로 연동
         private ConfigEntry<BepInEx.Configuration.KeyboardShortcut> ShowCounter;
 
-
+        public static MyLog myLog;
 
         public static PoseStreamLilly sample;
 
@@ -38,7 +38,8 @@ namespace COM3D2.PoseStreamLilly.Plugin
         /// </summary>
         public void Awake()
         {
-            MyLog.LogMessage("Awake");
+            myLog = new MyLog(MyAttribute.PLAGIN_NAME);
+            myLog.LogMessage("Awake");
 
             // 단축키 기본값 설정
             ShowCounter = Config.Bind("KeyboardShortcut", "KeyboardShortcut0", new BepInEx.Configuration.KeyboardShortcut(KeyCode.Alpha9, KeyCode.LeftControl));
@@ -52,7 +53,7 @@ namespace COM3D2.PoseStreamLilly.Plugin
 
         public void OnEnable()
         {
-            MyLog.LogMessage("OnEnable");
+            myLog.LogMessage("OnEnable");
 
             SceneManager.sceneLoaded += this.OnSceneLoaded;
 
@@ -65,7 +66,7 @@ namespace COM3D2.PoseStreamLilly.Plugin
         /// </summary>
         public void Start()
         {
-            MyLog.LogMessage("Start");
+            myLog.LogMessage("Start");
 
             PoseStreamLillyGUI.Install(gameObject, Config);
 
@@ -77,7 +78,7 @@ namespace COM3D2.PoseStreamLilly.Plugin
 
         public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
         {
-            MyLog.LogMessage("OnSceneLoaded", scene.name, scene.buildIndex);
+            myLog.LogMessage("OnSceneLoaded", scene.name, scene.buildIndex);
             //  scene.buildIndex 는 쓰지 말자 제발
             scene_name = scene.name;
         }
@@ -91,15 +92,15 @@ namespace COM3D2.PoseStreamLilly.Plugin
         {
             if (ShowCounter.Value.IsDown())
             {
-                MyLog.LogMessage("IsDown", ShowCounter.Value.Modifiers, ShowCounter.Value.MainKey);
+                myLog.LogMessage("IsDown", ShowCounter.Value.Modifiers, ShowCounter.Value.MainKey);
             }
             if (ShowCounter.Value.IsPressed())
             {
-                MyLog.LogMessage("IsPressed", ShowCounter.Value.Modifiers, ShowCounter.Value.MainKey);
+                myLog.LogMessage("IsPressed", ShowCounter.Value.Modifiers, ShowCounter.Value.MainKey);
             }
             if (ShowCounter.Value.IsUp())
             {
-                MyLog.LogMessage("IsUp", ShowCounter.Value.Modifiers, ShowCounter.Value.MainKey);
+                myLog.LogMessage("IsUp", ShowCounter.Value.Modifiers, ShowCounter.Value.MainKey);
             }
         }
 
@@ -119,7 +120,7 @@ namespace COM3D2.PoseStreamLilly.Plugin
 
         public void OnDisable()
         {
-            MyLog.LogMessage("OnDisable");
+            myLog.LogMessage("OnDisable");
 
             SceneManager.sceneLoaded -= this.OnSceneLoaded;
 
@@ -127,12 +128,12 @@ namespace COM3D2.PoseStreamLilly.Plugin
 
         public void Pause()
         {
-            MyLog.LogMessage("Pause");
+            myLog.LogMessage("Pause");
         }
 
         public void Resume()
         {
-            MyLog.LogMessage("Resume");
+            myLog.LogMessage("Resume");
         }
 
 
