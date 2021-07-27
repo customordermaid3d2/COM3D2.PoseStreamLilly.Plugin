@@ -1,15 +1,15 @@
 
-# ¿¹½Ã
+# ì˜ˆì‹œ
 
 https://youtu.be/6FEQ014R_eE
 
 
-# ¼³Ä¡ À§Ä¡
+# ì„¤ì¹˜ ìœ„ì¹˜
 
 COM3D2\BepInEx\plugins
 
 
-# ÇÊ¿äÇÑ°Å
+# í•„ìš”í•œê±°
 
 - BepInEx https://github.com/BepInEx/BepInEx  
 - SybarisLoader https://github.com/BepInEx/BepInEx.SybarisLoader.Patcher  
