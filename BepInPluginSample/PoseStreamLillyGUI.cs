@@ -11,7 +11,7 @@ using System.Text;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace BepInPluginSample
+namespace COM3D2.PoseStreamLilly.Plugin
 {
     class PoseStreamLillyGUI : MonoBehaviour
     {
@@ -57,7 +57,7 @@ namespace BepInPluginSample
 
         public void Awake()
         {
-            myWindowRect = new MyWindowRect(config, MyAttribute.PLAGIN_NAME, MyAttribute.PLAGIN_NAME, "PS", ho:204);
+            myWindowRect = new MyWindowRect(config, MyAttribute.PLAGIN_FULL_NAME, MyAttribute.PLAGIN_NAME, "PS", ho:204);
             IsGUIOn = config.Bind("GUI", "isGUIOn", false);
             ShowCounter = config.Bind("GUI", "isGUIOnKey", new BepInEx.Configuration.KeyboardShortcut(KeyCode.Alpha9, KeyCode.LeftControl));           
             
